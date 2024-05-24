@@ -5,7 +5,7 @@ export const HomePage = () => {
     <div className="container">
       <header>
         <div className="logo" />
-        <h1>React webová aplikace</h1>
+        <h1>Test</h1>
       </header>
       <main>
         <p>
