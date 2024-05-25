@@ -1,4 +1,4 @@
-import { Room } from '../../components/Room';
+import { Rooms } from '../../components/Rooms';
 import './style.css';
 
 export const HomePage = () => {
@@ -33,9 +33,8 @@ export const HomePage = () => {
         <div class="container">
           <h2>Naše pokoje</h2>
           <p>Vyberte si, který z našich pokojů je pro vás ten pravý.</p>
-          <div class="cards-row">
-            <Room />
-          </div>
+
+          <Rooms />
         </div>
       </section>
 

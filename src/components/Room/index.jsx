@@ -1,6 +1,6 @@
-export const Room = ({ name, id, image, price, onSelect }) => {
+export const Room = ({ name, image, price }) => {
   return (
-    <div class="card" onClick={() => onSelect(id)}>
+    <div class="card">
       <img class="card__image" src={image} />
       <div class="card__title">{name}</div>
       <div class="card__body">{price} kč na osobu</div>
