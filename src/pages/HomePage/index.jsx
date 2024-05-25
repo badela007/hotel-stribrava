@@ -7,6 +7,9 @@ export const HomePage = () => {
   const [rooms, setRooms] = useState([]);
   const [selectedRoomId, setSelectedRoomId] = useState(0);
 
+
+
+
   useEffect(() => {
     const fetchedRooms = async () => {
       const response = await fetch('http://localhost:4000/api/rooms');
@@ -16,7 +19,9 @@ export const HomePage = () => {
 
     fetchedRooms();
   }, []);
-  console.log(selectedRoomId);
+
+  const selectedRoom = rooms.find(room => room.id === selectedRoomId);
+ 
 
   return (
     <>
@@ -36,13 +41,11 @@ export const HomePage = () => {
         <Rooms pokoje={rooms} onSelect={setSelectedRoomId} />
       </div>
       <div>
-        {selectedRoomId === null ? (
-          'Vyberte si pokoj'
-        ) : (
+        {selectedRoom && (
           <>
             <section className="light">
               <div class="container">
-                <RoomDetail />
+              <RoomDetail name={selectedRoom.name} image={`http://localhost:4000/assets/${selectedRoom.image}`} description={selectedRoom.description}/>
               </div>
             </section>
           </>
