@@ -1,37 +1,26 @@
-import { useEffect, useState } from "react";
-import { Room } from "../../components/Room";
-import { RoomDetail } from "../RoomDetail";
+import { Room } from '../../components/Room';
 
-export const Rooms = () => {
-  const [rooms, setRooms] = useState([]);
-  const [selectedRoom, setSelectedRoom] = useState(null);
-
-  const handleSelectedRoom = () => {
-    setSelectedRoom()
-  }
-
-  useEffect(() => {
-    const fetchedRooms = async () => {
-      const response = await fetch("http://localhost:4000/api/rooms");
-      const data = await response.json();
-      setRooms(data.data);
-    };
-
-    fetchedRooms();
-  }, []);
-  console.log(rooms);
-
+export const Rooms = ({ pokoje, onSelect }) => {
   return (
     <>
-    <div class="cards-row">
-      {rooms.map((room) => (
-        <Room onSelect={handleSelectedRoom} key={room.id} name={room.name} image={`http://localhost:4000/assets/${room.image}`} price={room.price} />
-      ))}
-    </div>
-    <div>
-    <RoomDetail id={room.id} name={selectedRoom} description={room.description} image={room.image} onSelect={setSelectedRoom}/>
-    </div>
+      <section className="dark">
+        <div class="container">
+          <h2>Naše pokoje</h2>
+          <p>Vyberte si, který z našich pokojů je pro vás ten pravý.</p>
+          <div class="cards-row">
+            {pokoje.map((room) => (
+              <Room
+                onSelect={onSelect}
+                key={room.id}
+                id={room.id}
+                name={room.name}
+                image={`http://localhost:4000/assets/${room.image}`}
+                price={room.price}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
-
