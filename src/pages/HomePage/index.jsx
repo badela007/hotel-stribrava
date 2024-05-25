@@ -1,20 +1,11 @@
-import { Room } from '../../components/Room';
+import { Rooms } from '../../components/Rooms';
 import './style.css';
 
 export const HomePage = () => {
-  const [rooms, setRooms] = useState([]);
-  const [selectedRoom, setSelectedRooms] = useState(null);
+ 
 
-  useEffect(() => {
-    const fetchRooms = async () => {
-      const response = await fetch();
-      const data = await response.json('http://localhost:4000/api/rooms');
-      setRooms(data.result);
-    };
 
-    fetchRooms();
-  }, []);
-  console.log(rooms);
+
   return (
     <div className="container">
       <div class="banner">
@@ -33,9 +24,9 @@ export const HomePage = () => {
         <div class="container">
           <h2>Naše pokoje</h2>
           <p>Vyberte si, který z našich pokojů je pro vás ten pravý.</p>
-          <div class="cards-row">
-            <Room />
-          </div>
+      
+            <Rooms />
+          
         </div>
       </section>
 
